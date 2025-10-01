@@ -6074,7 +6074,7 @@ void MainWindow::on_pushButton_FWAddSplashImage_clicked()
         return;
     }
 
-    if (filePath == NULL)
+    if (filePath.isNull())
         filePath = m_ptnImagePath;
     fileName = QFileDialog::getOpenFileName(this,
                                             QString("Select Splash Image"),
@@ -6117,7 +6117,7 @@ void MainWindow::on_pushButton_FWRemoveSplashImage_clicked()
     m_addedSplashImages[index].clear();
     for(i = index; i < MAX_SPLASH_IMAGES - 1; i++)
     {
-        if((m_addedSplashImages[i] == NULL) && (m_addedSplashImages[i + 1] == NULL))
+        if((m_addedSplashImages[i].isNull()) && (m_addedSplashImages[i + 1].isNull()))
             break;
         m_addedSplashImages[i] = m_addedSplashImages[i + 1];
     }
@@ -6134,7 +6134,7 @@ void MainWindow::on_pushButton_FWRemoveSplashImage_clicked()
 
 void MainWindow::on_comboBox_FWSplashImageIndex_currentIndexChanged(int index)
 {
-    if (m_addedSplashImages[index] == NULL)
+    if (m_addedSplashImages[index].isNull())
     {
         ui->label_FWPreviewSelImage->clear();
         return;
@@ -6157,13 +6157,13 @@ void MainWindow::on_pushButton_FWChangeSplashImage_clicked()
     static QString filePath;
     int index = ui->comboBox_FWSplashImageIndex->currentIndex();
 
-    if (m_addedSplashImages[index] == NULL)
+    if (m_addedSplashImages[index].isNull())
     {
         ShowError("Use Add Button to add patterns in sequence\n");
         return;
     }
 
-    if (filePath == NULL)
+    if (filePath.isNull())
         filePath = m_ptnImagePath;
     fileName = QFileDialog::getOpenFileName(this,
                                             QString("Select Image"),
@@ -6283,7 +6283,7 @@ void MainWindow::on_pushButton_FWSplashImageUpload_clicked()
 
     for(i = 0; i < MAX_SPLASH_IMAGES; i++)
     {
-        if (m_addedSplashImages[i] != NULL)
+        if (!m_addedSplashImages[i].isNull())
             count++;
     }
 
@@ -6433,7 +6433,7 @@ void MainWindow::on_pushButton_FWSplashImageUpload_clicked()
 
     for(i = 0; i < MAX_SPLASH_IMAGES; i++)
     {
-        if (m_addedSplashImages[i] == NULL)
+        if (m_addedSplashImages[i].isNull())
             continue;
 
         QFile imgFile(m_addedSplashImages[i]);
@@ -6695,7 +6695,7 @@ void MainWindow::on_pushButton_FWBuildNewFrmwImage_clicked()
 
     for(i = 0; i < MAX_SPLASH_IMAGES; i++)
     {
-        if (m_addedSplashImages[i] != NULL)
+        if (!m_addedSplashImages[i].isNull())
             count++;
     }
 
@@ -6711,7 +6711,7 @@ void MainWindow::on_pushButton_FWBuildNewFrmwImage_clicked()
     out << "Building Images from specified BMPs\n\n";
     for(i = 0; i < MAX_SPLASH_IMAGES; i++)
     {
-        if (m_addedSplashImages[i] == NULL)
+        if (m_addedSplashImages[i].isNull())
             continue;
 
         QFile imgFile(m_addedSplashImages[i]);
