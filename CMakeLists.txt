@@ -9,12 +9,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 查找Qt库
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
-find_package(hidapi REQUIRED)
+if(WIN32)
+    find_package(hidapi REQUIRED)
+else()
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(HIDAPI REQUIRED hidapi-libusb)
 
-# 启用自动处理MOC、UIC和RCC
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
+endif()
+
+qt_standard_project_setup()
 
 # 设置AUTOUIC搜索路径
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/ui)
@@ -65,7 +68,12 @@ add_executable(${PROJECT_NAME}
 
 # 链接Qt库
 target_link_libraries(${PROJECT_NAME} Qt6::Core Qt6::Gui Qt6::Widgets)
-target_link_libraries(${PROJECT_NAME} hidapi::hidapi)
+if(WIN32)
+    target_link_libraries(${PROJECT_NAME} hidapi::hidapi)
+else()
+    target_include_directories(${PROJECT_NAME} PRIVATE ${HIDAPI_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} ${HIDAPI_LIBRARIES})
+endif()
 # 包含目录
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}

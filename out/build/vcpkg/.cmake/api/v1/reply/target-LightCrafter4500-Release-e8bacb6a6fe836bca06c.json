@@ -41,7 +41,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 59,
+				"line" : 56,
 				"parent" : 0
 			},
 			{
@@ -53,7 +53,7 @@
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 67,
+				"line" : 64,
 				"parent" : 0
 			},
 			{
@@ -161,13 +161,13 @@
 			{
 				"command" : 7,
 				"file" : 1,
-				"line" : 70,
+				"line" : 67,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 68,
+				"line" : 65,
 				"parent" : 0
 			}
 		]
@@ -299,8 +299,7 @@
 				4,
 				5,
 				6,
-				7,
-				24
+				7
 			]
 		}
 	],
@@ -390,18 +389,26 @@
 	"sourceGroups" : 
 	[
 		{
-			"name" : "Source Files",
+			"name" : "Source Files\\Generated",
 			"sourceIndexes" : 
 			[
 				0,
+				21,
+				22,
+				23
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
 				1,
 				2,
 				3,
 				4,
 				5,
 				6,
-				7,
-				24
+				7
 			]
 		},
 		{
@@ -417,9 +424,7 @@
 				14,
 				15,
 				16,
-				17,
-				21,
-				22
+				17
 			]
 		},
 		{
@@ -428,16 +433,14 @@
 			[
 				18,
 				19,
-				20,
-				23
+				20
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				25,
-				26
+				24
 			]
 		}
 	],
@@ -454,145 +457,132 @@
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/main.cpp",
-			"sourceGroupIndex" : 0
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/mainwindow.cpp",
-			"sourceGroupIndex" : 0
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/dlpc350_common.cpp",
-			"sourceGroupIndex" : 0
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/dlpc350_usb.cpp",
-			"sourceGroupIndex" : 0
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/dlpc350_api.cpp",
-			"sourceGroupIndex" : 0
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/dlpc350_BMPParser.cpp",
-			"sourceGroupIndex" : 0
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/dlpc350_firmware.cpp",
-			"sourceGroupIndex" : 0
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/mainwindow.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/dlpc350_usb.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/dlpc350_api.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/dlpc350_BMPParser.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/dlpc350_firmware.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/dlpc350_version.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/dlpc350_common.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/dlpc350_flashDevice.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/Helper.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "inc/dlpc350_error.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 2,
 			"path" : "ui/mainwindow.ui",
-			"sourceGroupIndex" : 2
+			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 2,
 			"path" : "ui/dialog.ui",
-			"sourceGroupIndex" : 2
+			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 2,
 			"path" : "Lcr2.qrc",
-			"sourceGroupIndex" : 2
+			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "out/build/vcpkg/LightCrafter4500_autogen/include/ui/ui_mainwindow.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "out/build/vcpkg/LightCrafter4500_autogen/include/ui/ui_dialog.h",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "out/build/vcpkg/LightCrafter4500_autogen/timestamp",
-			"sourceGroupIndex" : 2
-		},
-		{
-			"backtrace" : 0,
-			"compileGroupIndex" : 0,
-			"isGenerated" : true,
-			"path" : "out/build/vcpkg/LightCrafter4500_autogen/EWIEGA46WW/qrc_Lcr2.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "out/build/vcpkg/LightCrafter4500_autogen/timestamp.rule",
-			"sourceGroupIndex" : 3
-		},
-		{
-			"backtrace" : 0,
-			"isGenerated" : true,
-			"path" : "out/build/vcpkg/LightCrafter4500_autogen/EWIEGA46WW/qrc_Lcr2.cpp.rule",
-			"sourceGroupIndex" : 3
+			"sourceGroupIndex" : 4
 		}
 	],
 	"type" : "EXECUTABLE"

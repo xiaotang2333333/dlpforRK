@@ -1153,10 +1153,12 @@
 			"path" : "C:/msys64/ucrt64/lib/cmake/hidapi/libhidapi-release.cmake"
 		},
 		{
-			"path" : "vcpkg.json"
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/msys64/ucrt64/share/cmake/Modules/GNUInstallDirs.cmake"
 		},
 		{
-			"path" : "Lcr2.qrc"
+			"path" : "vcpkg.json"
 		}
 	],
 	"kind" : "cmakeFiles",

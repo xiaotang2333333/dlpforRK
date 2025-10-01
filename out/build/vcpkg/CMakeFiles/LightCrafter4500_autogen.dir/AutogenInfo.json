@@ -277,8 +277,8 @@
 		"C:/msys64/ucrt64/lib/cmake/hidapi/hidapi-config.cmake",
 		"C:/msys64/ucrt64/lib/cmake/hidapi/libhidapi.cmake",
 		"C:/msys64/ucrt64/lib/cmake/hidapi/libhidapi-release.cmake",
-		"C:/Users/65717/Desktop/dlpc/vcpkg.json",
-		"C:/Users/65717/Desktop/dlpc/Lcr2.qrc"
+		"C:/msys64/ucrt64/share/cmake/Modules/GNUInstallDirs.cmake",
+		"C:/Users/65717/Desktop/dlpc/vcpkg.json"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/Users/65717/Desktop/dlpc",
 	"CROSS_CONFIG" : false,
