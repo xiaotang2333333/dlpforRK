@@ -1,0 +1,5 @@
+C:/Users/65717/Desktop/dlpc/out/build/vcpkg/CMakeFiles/LightCrafter4500.dir
+C:/Users/65717/Desktop/dlpc/out/build/vcpkg/CMakeFiles/edit_cache.dir
+C:/Users/65717/Desktop/dlpc/out/build/vcpkg/CMakeFiles/rebuild_cache.dir
+C:/Users/65717/Desktop/dlpc/out/build/vcpkg/CMakeFiles/LightCrafter4500_autogen_timestamp_deps.dir
+C:/Users/65717/Desktop/dlpc/out/build/vcpkg/CMakeFiles/LightCrafter4500_autogen.dir
