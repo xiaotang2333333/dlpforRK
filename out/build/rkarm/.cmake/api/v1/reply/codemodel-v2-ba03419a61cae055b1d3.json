@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "LightCrafter4500",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "LightCrafter4500::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LightCrafter4500-Debug-e07d30bdcd4a5aacc471.json",
+					"name" : "LightCrafter4500",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "LightCrafter4500_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LightCrafter4500_autogen-Debug-3095d2a0581102a2be1c.json",
+					"name" : "LightCrafter4500_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "LightCrafter4500_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LightCrafter4500_autogen_timestamp_deps-Debug-3abb986cebbab88ac824.json",
+					"name" : "LightCrafter4500_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/dlpforRK/out/build/rkarm",
+		"source" : "/dlpforRK"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"BUILD_DIR" : "/dlpforRK/out/build/rkarm/LightCrafter4500_autogen",
+	"CMAKE_BINARY_DIR" : "/dlpforRK/out/build/rkarm",
+	"CMAKE_CURRENT_BINARY_DIR" : "/dlpforRK/out/build/rkarm",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/dlpforRK",
+	"CMAKE_SOURCE_DIR" : "/dlpforRK",
+	"GENERATOR" : "Ninja",
+	"INCLUDE_DIR" : "/dlpforRK/out/build/rkarm/LightCrafter4500_autogen/include",
+	"INPUTS" : 
+	[
+		"/dlpforRK/Icons/trigger_item_inv.png",
+		"/dlpforRK/Icons/LCr4500.ico",
+		"/dlpforRK/Icons/Led_R.png",
+		"/dlpforRK/Icons/my_stop.png",
+		"/dlpforRK/Icons/DLP4500.jpg",
+		"/dlpforRK/Icons/trigger_item.png",
+		"/dlpforRK/Icons/Led_G.png",
+		"/dlpforRK/Icons/Led_Y.png",
+		"/dlpforRK/Icons/my_pause.png",
+		"/dlpforRK/Icons/my_play.png",
+		"/dlpforRK/Icons/trigger.png",
+		"/dlpforRK/Icons/inverted_triangle.jpg",
+		"/dlpforRK/Icons/dmd.jpg",
+		"/dlpforRK/Icons/trigger_inv.png"
+	],
+	"LOCK_FILE" : "/dlpforRK/out/build/rkarm/CMakeFiles/LightCrafter4500_autogen.dir/AutoRcc_Lcr2_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "Lcr2" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_Lcr2.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/dlpforRK/out/build/rkarm/CMakeFiles/LightCrafter4500_autogen.dir/AutoRcc_Lcr2_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/dlpforRK/Lcr2.qrc",
+	"VERBOSITY" : 0
+}

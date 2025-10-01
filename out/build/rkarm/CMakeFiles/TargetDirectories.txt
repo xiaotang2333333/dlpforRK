@@ -1,0 +1,5 @@
+/dlpforRK/out/build/rkarm/CMakeFiles/LightCrafter4500.dir
+/dlpforRK/out/build/rkarm/CMakeFiles/edit_cache.dir
+/dlpforRK/out/build/rkarm/CMakeFiles/rebuild_cache.dir
+/dlpforRK/out/build/rkarm/CMakeFiles/LightCrafter4500_autogen_timestamp_deps.dir
+/dlpforRK/out/build/rkarm/CMakeFiles/LightCrafter4500_autogen.dir

@@ -426,9 +426,9 @@ MainWindow::~MainWindow()
     free(g_pImageBuffer);
     for(i = 0; i < MAX_SPLASH_IMAGES; i++)
     {
-        char file_name[11];
+        char file_name[32];
 
-        sprintf(file_name, "temp_%d.bmp", i);
+        snprintf(file_name, sizeof(file_name), "temp_%d.bmp", i);
         QFile outFile(file_name);
 
         outFile.remove();
@@ -6000,13 +6000,13 @@ void MainWindow::on_pushButton_FWSelectFWBin_clicked()
 
             for (i = 0; i < splash_count; i++)
             {
-                char file_name[11];
+                char file_name[20];
 
                 QApplication::processEvents(); //Update GUI
 
                 ui->progressBar_FWFileParsing->setValue(i*100/(splash_count - 1));
 
-                sprintf(file_name, "temp_%d.bmp", i);
+                snprintf(file_name,sizeof(file_name),"temp_%d.bmp", i);
                 QFile outFile(file_name);
 
                 if(outFile.open(QIODevice::ReadWrite))
