@@ -1,28 +1,17 @@
 cmake_minimum_required(VERSION 3.16)
 
-# 项目名称和版本
 project(LightCrafter4500 VERSION 1.0.0 LANGUAGES CXX)
 
-# 设置C++标准
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 查找Qt库
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
-if(WIN32)
-    find_package(hidapi REQUIRED)
-else()
-    find_package(PkgConfig REQUIRED)
-    pkg_check_modules(HIDAPI REQUIRED hidapi-libusb)
-
-endif()
+find_package(hidapi REQUIRED)
 
 qt_standard_project_setup()
 
-# 设置AUTOUIC搜索路径
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/ui)
 
-# 添加源文件
 set(SOURCES
     src/main.cpp
     src/mainwindow.cpp
@@ -33,7 +22,6 @@ set(SOURCES
     src/dlpc350_firmware.cpp
 )
 
-# 添加头文件
 set(HEADERS
     inc/mainwindow.h
     inc/dlpc350_usb.h
@@ -47,18 +35,15 @@ set(HEADERS
     inc/dlpc350_error.h
 )
 
-# 添加UI文件
 set(FORMS
     ui/mainwindow.ui
     ui/dialog.ui
 )
 
-# 添加资源文件
 set(RESOURCES
    Lcr2.qrc
 )
 
-# 创建可执行文件
 add_executable(${PROJECT_NAME} 
     ${SOURCES}
     ${HEADERS}
@@ -66,15 +51,9 @@ add_executable(${PROJECT_NAME}
     ${RESOURCES}
 )
 
-# 链接Qt库
 target_link_libraries(${PROJECT_NAME} Qt6::Core Qt6::Gui Qt6::Widgets)
-if(WIN32)
-    target_link_libraries(${PROJECT_NAME} hidapi::hidapi)
-else()
-    target_include_directories(${PROJECT_NAME} PRIVATE ${HIDAPI_INCLUDE_DIRS})
-    target_link_libraries(${PROJECT_NAME} ${HIDAPI_LIBRARIES})
-endif()
-# 包含目录
+target_link_libraries(${PROJECT_NAME} hidapi::hidapi)
+
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
