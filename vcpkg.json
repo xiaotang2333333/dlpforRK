@@ -5,7 +5,8 @@
       "default-features": false,
       "features": [
         "gui",
-        "widgets"
+        "widgets",
+        "xcb"
       ]
     },
     "hidapi"

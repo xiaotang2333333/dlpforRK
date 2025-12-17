@@ -44,23 +44,40 @@ set(RESOURCES
    Lcr2.qrc
 )
 
-add_executable(${PROJECT_NAME} 
+qt_add_executable(dlp
     ${SOURCES}
     ${HEADERS}
     ${FORMS}
     ${RESOURCES}
 )
 
-target_link_libraries(${PROJECT_NAME} Qt6::Core Qt6::Gui Qt6::Widgets)
-target_link_libraries(${PROJECT_NAME} hidapi::hidapi)
-
-target_include_directories(${PROJECT_NAME} PRIVATE
+target_link_libraries(dlp PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+target_link_libraries(dlp PRIVATE hidapi::hidapi)
+set_target_properties(dlp PROPERTIES
+    INSTALL_RPATH "$ORIGIN/../lib"
+)
+target_include_directories(dlp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
 )
-
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+set(QT_CONF_DIR "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/Qt6/plugins")
+include(GNUInstallDirs)
+include(CPack)
+install(TARGETS dlp
+    DESTINATION bin
+    RUNTIME_DEPENDENCY_SET dep
 )
+install(DIRECTORY
+    "${QT_CONF_DIR}/"
+    DESTINATION lib
+)
+install(
+    RUNTIME_DEPENDENCY_SET dep
+    DESTINATION lib
+    DIRECTORIES
+    "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}"
+    "/usr/aarch64-linux-gnu/lib/"
+)
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" "[Paths]\nPlugins=../lib\n")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" DESTINATION bin)
+set(CPACK_GENERATOR "TGZ")

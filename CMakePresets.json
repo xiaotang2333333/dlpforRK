@@ -8,6 +8,7 @@
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
+                "VCPKG_OVERLAY_TRIPLETS" : "${sourceDir}",
                 "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/x64-arm64-toolchain.cmake",
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
             }
