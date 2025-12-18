@@ -54,13 +54,13 @@ qt_add_executable(dlp
 target_link_libraries(dlp PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
 target_link_libraries(dlp PRIVATE hidapi::hidapi)
 set_target_properties(dlp PROPERTIES
-    INSTALL_RPATH "$ORIGIN/../lib"
+    INSTALL_RPATH "\$ORIGIN/../lib"
 )
 target_include_directories(dlp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
 )
-set(QT_CONF_DIR "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/Qt6/plugins")
+set(QT_CONF_DIR "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/Qt6")
 include(GNUInstallDirs)
 include(CPack)
 install(TARGETS dlp
@@ -68,8 +68,8 @@ install(TARGETS dlp
     RUNTIME_DEPENDENCY_SET dep
 )
 install(DIRECTORY
-    "${QT_CONF_DIR}/"
-    DESTINATION lib
+    "${QT_CONF_DIR}"
+    DESTINATION .
 )
 install(
     RUNTIME_DEPENDENCY_SET dep
@@ -78,6 +78,19 @@ install(
     "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}"
     "/usr/aarch64-linux-gnu/lib/"
 )
+# Create qt.conf to set plugin path
 file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" "[Paths]\nPlugins=../lib\n")
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" DESTINATION bin)
+file(GLOB WAYLAND_CLIENT_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6WaylandClient.so*")
+install( 
+    FILES
+        ${WAYLAND_CLIENT_DEP}
+        DESTINATION lib
+)
+file(GLOB WAYLAND_COMPOSITOR_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6WaylandCompositor.so*")
+install( 
+    FILES
+        ${WAYLAND_COMPOSITOR_DEP}
+        DESTINATION lib
+)
 set(CPACK_GENERATOR "TGZ")

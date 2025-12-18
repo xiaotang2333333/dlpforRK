@@ -6,8 +6,17 @@
       "features": [
         "gui",
         "widgets",
-        "xcb"
+        "wayland"
       ]
+    },
+    {
+      "name": "qtwayland",
+      "default-features": false,
+      "host": true
+    },
+    {
+      "name": "qtwayland",
+      "default-features": false
     },
     "hidapi"
   ]
