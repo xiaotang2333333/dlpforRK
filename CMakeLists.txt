@@ -79,7 +79,7 @@ install(
     "/usr/aarch64-linux-gnu/lib/"
 )
 # Create qt.conf to set plugin path
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" "[Paths]\nPlugins=../lib\n")
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" "[Paths]\nPlugins=../Qt6/plugins\n")
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" DESTINATION bin)
 file(GLOB WAYLAND_CLIENT_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6WaylandClient.so*")
 install( 
@@ -91,6 +91,12 @@ file(GLOB WAYLAND_COMPOSITOR_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}
 install( 
     FILES
         ${WAYLAND_COMPOSITOR_DEP}
+        DESTINATION lib
+)
+file(GLOB XCB_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6XcbQpa.so*")
+install( 
+    FILES
+        ${XCB_DEP}
         DESTINATION lib
 )
 set(CPACK_GENERATOR "TGZ")
