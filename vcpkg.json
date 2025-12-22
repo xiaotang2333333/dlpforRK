@@ -6,18 +6,11 @@
       "features": [
         "gui",
         "widgets",
-        "wayland",
-        "xcb"
+        "xcb",
+        "fontconfig",
+        "jpeg",
+        "png"
       ]
-    },
-    {
-      "name": "qtwayland",
-      "default-features": false,
-      "host": true
-    },
-    {
-      "name": "qtwayland",
-      "default-features": false
     },
     "hidapi"
   ]

@@ -76,23 +76,13 @@ install(
     DESTINATION lib
     DIRECTORIES
     "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}"
-    "/usr/aarch64-linux-gnu/lib/"
+    PRE_EXCLUDE_REGEXES 
+    "*gcc*"
+    
 )
 # Create qt.conf to set plugin path
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" "[Paths]\nPlugins=../Qt6/plugins\n")
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" "[Paths]\nPlugins=../Qt6/plugins\nFont=/usr/share/fonts")
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" DESTINATION bin)
-file(GLOB WAYLAND_CLIENT_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6WaylandClient.so*")
-install( 
-    FILES
-        ${WAYLAND_CLIENT_DEP}
-        DESTINATION lib
-)
-file(GLOB WAYLAND_COMPOSITOR_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6WaylandCompositor.so*")
-install( 
-    FILES
-        ${WAYLAND_COMPOSITOR_DEP}
-        DESTINATION lib
-)
 file(GLOB XCB_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6XcbQpa.so*")
 install( 
     FILES
