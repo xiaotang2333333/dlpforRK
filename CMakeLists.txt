@@ -77,7 +77,8 @@ install(
     DIRECTORIES
     "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}"
     PRE_EXCLUDE_REGEXES 
-    "*gcc*"
+    "libgcc*"
+    "libgomp*"
     
 )
 # Create qt.conf to set plugin path
