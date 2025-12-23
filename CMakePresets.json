@@ -14,13 +14,13 @@
             }
         },
         {
-            "name": "linux",
-            "displayName": "x64 工具链配置预设",
+            "name": "x64-mingw",
+            "displayName": "x64 mingw 工具链配置预设",
             "description": "设置生成器、版本和安装目录",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
-                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/linux.cmake",
+                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/x64-mingw.cmake",
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
             }
         }

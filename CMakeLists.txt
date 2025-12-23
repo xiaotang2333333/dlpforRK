@@ -61,6 +61,7 @@ target_include_directories(dlp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
 )
 set(QT_CONF_DIR "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/Qt6")
+#file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" CONTENT "[Paths]\nPlugins=${QT_CONF_DIR}/plugins")
 include(GNUInstallDirs)
 include(CPack)
 install(TARGETS dlp
