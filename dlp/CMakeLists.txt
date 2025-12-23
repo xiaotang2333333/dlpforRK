@@ -1,5 +1,4 @@
 qt_add_library(DLP_Driver OBJECT)
-find_package(hidapi REQUIRED)
 target_sources(DLP_Driver
     PRIVATE
     src/dlpc350_common.cpp

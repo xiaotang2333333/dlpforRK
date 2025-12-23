@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(LightCrafter4500 VERSION 1.0.0 LANGUAGES CXX)
-find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(hidapi REQUIRED)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 qt_standard_project_setup()

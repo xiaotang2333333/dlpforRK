@@ -1,5 +1,3 @@
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
-find_package(hidapi REQUIRED)
 qt_add_library(UI OBJECT)
 qt_add_resources(UI
    ui/Lcr2.qrc
