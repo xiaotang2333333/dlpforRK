@@ -1,6 +1,7 @@
 
 qt_add_library(UI STATIC)
-qt_add_resources(UI
+qt_add_resources(
+    img
    ui/Lcr2.qrc
 )
 target_sources(UI
@@ -9,6 +10,7 @@ target_sources(UI
     ui/mainwindow.ui
     ui/dialog.ui
     inc/Helper.h
+    ${img}
     PUBLIC
     inc/mainwindow.h
 )
