@@ -43,12 +43,7 @@
 #include <setupapi.h>
 #endif
 #include <hidapi.h>
-
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include <QMessageBox>
-#include <QTimer>
-
+#include <cstring>
 /***************************************************
 *                  GLOBAL VARIABLES
 ****************************************************/
