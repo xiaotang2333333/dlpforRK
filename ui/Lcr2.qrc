@@ -14,5 +14,8 @@
         <file>Icons/Led_Y.png</file>
         <file>Icons/LCr4500.ico</file>
         <file>Icons/DLP4500.jpg</file>
+        <file>Icons/LCr4500.icns</file>
+        <file>Icons/LCr4500Logo.jpg</file>
+        <file>Icons/Led_Gray.png</file>
     </qresource>
 </RCC>

@@ -40,8 +40,8 @@ set(FORMS
     ui/dialog.ui
 )
 
-set(RESOURCES
-   Lcr2.qrc
+qt_add_resources(RESOURCES
+   ui/Lcr2.qrc
 )
 
 qt_add_executable(dlp
@@ -77,9 +77,12 @@ install(
     DIRECTORIES
     "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}"
     PRE_EXCLUDE_REGEXES 
-    "libgcc*"
-    "libgomp*"
-    
+    "libgcc." 
+    "libgomp."
+    POST_EXCLUDE_REGEXES
+    "^/lib" 
+    "^/usr/lib"
+    "^/usr/local/lib"
 )
 # Create qt.conf to set plugin path
 file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" "[Paths]\nPlugins=../Qt6/plugins\nFont=/usr/share/fonts")
