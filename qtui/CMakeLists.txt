@@ -1,16 +1,12 @@
 
 qt_add_library(UI STATIC)
-qt_add_resources(
-    img
-   ui/Lcr2.qrc
-)
 target_sources(UI
     PRIVATE
     src/mainwindow.cpp
     ui/mainwindow.ui
     ui/dialog.ui
     inc/Helper.h
-    ${img}
+    ui/Lcr2.qrc
     PUBLIC
     inc/mainwindow.h
 )
@@ -23,6 +19,7 @@ target_include_directories(UI
 set_target_properties( 
     UI PROPERTIES
     AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/ui"
+    AUTORCC ON
 )
 target_link_libraries(UI PRIVATE DLP_Driver)
 target_link_libraries(UI PUBLIC Qt6::Core Qt6::Gui Qt6::Widgets hidapi::hidapi)

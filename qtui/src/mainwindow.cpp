@@ -64,6 +64,7 @@
 #include <QPainter>
 #include <QTimer>
 #include <QTime>
+#include <QResource>
 
 #ifndef DEBUG_LOG_EN
 //Enable MACRO to see debug logs
@@ -261,6 +262,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     m_settings("Texas Instruments", "LightCrafter GUI")
 {
+    Q_INIT_RESOURCE(Lcr2);
     ui->setupUi(this);
 
     // Display GUI Version #
