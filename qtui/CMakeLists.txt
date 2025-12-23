@@ -1,4 +1,5 @@
-qt_add_library(UI OBJECT)
+
+qt_add_library(UI STATIC)
 qt_add_resources(UI
    ui/Lcr2.qrc
 )

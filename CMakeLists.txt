@@ -8,11 +8,6 @@ qt_standard_project_setup()
 add_subdirectory(qtui)
 add_subdirectory(dlp)
 qt_add_executable(LightCrafter main.cpp)
-set_target_properties(LightCrafter PROPERTIES
-    AUTOMOC OFF
-    AUTOUIC OFF
-    AUTORCC OFF
-)
 target_link_libraries(LightCrafter PRIVATE DLP_Driver UI)
 
 set_target_properties(LightCrafter PROPERTIES
