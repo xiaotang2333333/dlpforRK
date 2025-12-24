@@ -12,6 +12,9 @@ target_link_libraries(LightCrafter PRIVATE DLP_Driver UI)
 
 set_target_properties(LightCrafter PROPERTIES
     INSTALL_RPATH "\$ORIGIN/../lib"
+    AUTORCC OFF
+    AUTOMOC OFF
+    AUTOUIC OFF
 )
 set(QT_CONF_DIR "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/Qt6")
 #file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" CONTENT "[Paths]\nPlugins=${QT_CONF_DIR}/plugins")
