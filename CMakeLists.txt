@@ -47,7 +47,11 @@ install(
     "^/usr/local/lib"
 )
 # Create qt.conf to set plugin path
-install(SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/cmake/generate_intstall_qt_conf.cmake")
+install( 
+    FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/qt.conf"
+    DESTINATION bin
+)
 file(GLOB XCB_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6XcbQpa.so*")
 install( 
     FILES

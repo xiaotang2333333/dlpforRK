@@ -1,3 +1,0 @@
-file(MAKE_DIRECTORY "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}")
-file(WRITE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}/qt.conf"
-  "[Paths]\nPlugins=../Qt6/plugins\nFont=/usr/share/fonts")
