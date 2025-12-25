@@ -16,13 +16,18 @@ set_target_properties(LightCrafter PROPERTIES
     AUTOMOC OFF
     AUTOUIC OFF
 )
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/FlashDeviceParameters.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 set(QT_CONF_DIR "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/Qt6")
-#file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" CONTENT "[Paths]\nPlugins=${QT_CONF_DIR}/plugins")
+file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" CONTENT "[Paths]\nPlugins=${QT_CONF_DIR}/plugins")
 include(GNUInstallDirs)
 include(CPack)
 install(TARGETS LightCrafter
     DESTINATION bin
     RUNTIME_DEPENDENCY_SET dep
+)
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/FlashDeviceParameters.txt"
+    DESTINATION bin
 )
 install(DIRECTORY
     "${QT_CONF_DIR}"
@@ -42,8 +47,7 @@ install(
     "^/usr/local/lib"
 )
 # Create qt.conf to set plugin path
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" "[Paths]\nPlugins=../Qt6/plugins\nFont=/usr/share/fonts")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/qt.conf" DESTINATION bin)
+install(SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/cmake/generate_intstall_qt_conf.cmake")
 file(GLOB XCB_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6XcbQpa.so*")
 install( 
     FILES
