@@ -49,7 +49,7 @@ install(
 # Create qt.conf to set plugin path
 install( 
     FILES
-        ${CMAKE_CURRENT_SOURCE_DIR}/qt.conf
+        "${CMAKE_CURRENT_SOURCE_DIR}/qt.conf"
     DESTINATION bin
 )
 file(GLOB XCB_DEP "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/libQt6XcbQpa.so*")
