@@ -2,6 +2,7 @@
   "dependencies": [
     {
       "name": "qtbase",
+      "host":false,
       "default-features": false,
       "features": [
         "gui",
@@ -11,18 +12,12 @@
         "jpeg",
         "png"
       ],
-      "platform": "linux"
+      "platform": "linux & arm64"
     },
     {
       "name": "qtbase",
       "default-features": false,
-      "features": [
-        "gui",
-        "widgets",
-        "jpeg",
-        "png"
-      ],
-      "platform": "mingw"
+      "host": true
     },
     "hidapi"
   ]

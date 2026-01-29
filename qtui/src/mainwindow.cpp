@@ -64,7 +64,7 @@
 #include <QPainter>
 #include <QTimer>
 #include <QTime>
-
+#include <QElapsedTimer>
 #ifndef DEBUG_LOG_EN
 //Enable MACRO to see debug logs
 //#define DEBUG_LOG_EN
