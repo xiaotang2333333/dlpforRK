@@ -1,0 +1,48 @@
+FROM docker.xuanyuan.me/ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y gnupg ca-certificates
+COPY ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources
+RUN rm /etc/apt/sources.list
+
+RUN set -eux; \
+  apt update; \
+  apt install -y \
+    wget software-properties-common \
+    build-essential make patchelf \
+    qemu-user-static binfmt-support \
+    binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu \
+    git nano pkg-config ninja-build curl zip unzip tar \
+    locales autoconf autoconf-archive automake libtool meson bison flex python3-venv ; \
+  \
+  # 注册 qemu 解释器（容错处理）
+  update-binfmts --display || true; \
+  update-binfmts --enable qemu-aarch64 || true; \
+  \
+  # 添加 arm64 
+  dpkg --add-architecture arm64; \
+  \
+  rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt
+RUN git clone https://gitcode.com/GitHub_Trending/vc/vcpkg.git /opt/vcpkg
+WORKDIR /opt/vcpkg
+RUN ./bootstrap-vcpkg.sh
+
+ENV PATH="/opt/vcpkg:${PATH}"
+ENV VCPKG_ROOT="/opt/vcpkg"
+
+# 本地化设置
+RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 || true
+ENV LANG=en_US.UTF-8
+
+RUN test -f /usr/share/doc/kitware-archive-keyring/copyright || \
+  (wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor -o /usr/share/keyrings/kitware-archive-keyring.gpg); \
+  echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ jammy main' >/etc/apt/sources.list.d/kitware.list || true
+RUN apt-get update && apt-get install -y kitware-archive-keyring cmake
+RUN dpkg --add-architecture arm64
+RUN apt update && apt install -y  '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev libegl1-mesa-dev libsm-dev
+RUN apt update && apt install -y libudev-dev:arm64 '^libxcb.*-dev:arm64' libx11-xcb-dev:arm64 libglu1-mesa-dev:arm64 libxrender-dev:arm64 libxi-dev:arm64 libxkbcommon-dev:arm64 libxkbcommon-x11-dev:arm64 libegl1-mesa-dev:arm64 libsm-dev:arm64
+CMD ["/bin/bash"]
+
+

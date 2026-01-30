@@ -1,0 +1,12 @@
+\documentclass{easybook}
+
+\begin{document}
+    \author{XiaoTang}
+    \date{2026.1.30}
+    \section{编译工具}
+        安装wsl2，docker desktop和vscode,vscode安装cmake之类c++开发用和容器相关插件
+    \section{准备容器}
+        在vscode页面进入该目录下的docker文件夹进行容器构建，构建完成后从创建新的容器后进入。进入后，将vscode的工作区切换到工程下，安装好相关插件后vscode下方状态栏出现生成即可开始编译
+    \section{打包安装}
+        下方点击cpack后即可打包，打包的结果在./build文件夹下.sh文件,拷贝到开发板上后chmod后运行即可安装完成  
+\end{document}
