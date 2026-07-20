@@ -1,12 +1,117 @@
 \documentclass{easybook}
+\usepackage{listings}
 
 \begin{document}
-    \author{XiaoTang}
-    \date{2026.1.30}
-    \section{编译工具}
-        安装wsl2，docker desktop和vscode,vscode安装cmake之类c++开发用和容器相关插件
-    \section{准备容器}
-        在vscode页面进入该目录下的docker文件夹进行容器构建，构建完成后从创建新的容器后进入。进入后，将vscode的工作区切换到工程下，安装好相关插件后vscode下方状态栏出现生成即可开始编译
-    \section{打包安装}
-        下方点击cpack后即可打包，打包的结果在./build文件夹下.sh文件,拷贝到开发板上后chmod后运行即可安装完成  
+\author{XiaoTang}
+\date{2026.1.30}
+该软件为德州仪器开发的用于DLP4500开发板的跨平台控制软件，编写了跨平台的编译方式。
+用于控制DLP4500开发板的显示功能，并相当于开发参考。
+\section{所需库}
+项目UI需要QT6,DLP4500的SDK部分需求HIDAPI作为依赖。
+\section{项目结构}
+项目构建工具基于CMAKE与VCPKG，项目结构如下：
+\begin{itemize}
+    \item CMakeLists.txt:项目构建文件
+    \item vcpkg.json:vcpkg依赖文件
+    \item dlp:DLP4500 SDK文件夹
+    \item qtui:UI相关文件夹
+    \item cmake/toolchain:交叉编译工具链文件
+    \item docker:LINUX交叉编译容器相关文件夹
+    \item compile-guide:编译指南文件夹
+\end{itemize}
+\section{编译工具}
+\subsection{编译链}
+\subsubsection{Windows}
+Windows平台可使用MINGW或MSVC编译器进行编译。
+MSVC 工具链需要安装Visual Studio 生成工具，并在安装过程中选择“使用C++的桌面开发”并需勾选“用于 Windows 的 C++ CMake 工具”和“vcpkg包管理器”。
+MINGW工具链需要安装MSYS2,运行“MSYS2.exe”进入MSYS的终端并调用以下指令安装相关工具和库：
+
+\begin{lstlisting}
+pacman -S mingw-w64-ucrt-x86_64-toolchain
+\end{lstlisting}
+即完成编译链安装。
+
+\subsubsection{Linux}
+Linux平台可使用GCC编译器进行编译。直接通过apt包管理器安装GCC即可：
+
+\begin{lstlisting}
+sudo apt-get update
+sudo apt-get install build-essential
+\end{lstlisting}
+
+\subsection{CMAKE}
+CMake是Modern C++工程管理的事实标准，它提供了一个平台无关的构建系统，可以生成适用于不同平台和编译器的构建文件。
+其主要描述C++工程里各个文件之间的依赖关系，编译选项，链接选项等，并通过CMakeLists.txt文件进行配置。
+依据配置自动生成各个编译器的构建文件，如Makefile，Ninja，Visual Studio项目文件等。
+\subsubsection{Windows}
+CMake的安装可以通过以下步骤完成：
+\begin{itemize}
+    \item MSVC工具链：安装Visual Studio 生成工具，勾选对应选项。
+    \item MINGW工具链：安装\href{https://www.msys2.org/}{MSYS2},运行“MSYS2.exe”进入MSYS的终端并调用以下指令安装：
+
+\begin{lstlisting}
+pacman -S mingw-w64-ucrt-x86_64-cmake
+\end{lstlisting}
+
+\end{itemize}
+\subsubsection{Linux}
+Linux平台可以通过包管理器安装CMake，例如在Ubuntu上可以使用以下命令：
+
+\begin{lstlisting}
+sudo apt-get update
+sudo apt-get install cmake
+\end{lstlisting}
+或Snap包管理器：
+
+\begin{lstlisting}
+sudo snap install cmake --classic
+\end{lstlisting}
+APT提供的版本较为落后，如需安装最新版本的CMake，使用Snap包管理器或参考CMake官方网站提供的
+\href{https://apt.kitware.com/}{安装指南}
+
+\subsection{VCPKG}
+VCPKG是一个C++库管理工具，可以简化C++项目的依赖管理和构建过程。它提供了一个统一的接口来安装和管理C++库，使得开发者可以轻松地集成第三方库到他们的项目中。
+VCPKG支持多平台和多编译器，可以自动处理库的下载、构建和安装过程，极大地简化了C++项目的依赖管理。
+本项目使用VCPKG来管理依赖库HIDAPI和QT6。
+\subsubsection{Windows}
+在Windows平台上安装VCPKG，MSVC工具链安装Visual Studio 生成工具时勾选“vcpkg包管理器”选项即可完成安装。
+MINGW工具链运行以下命令安装Git：
+
+\begin{lstlisting}
+pacman -S git
+\end{lstlisting}
+Git安装完成后打开命令行工具并执行以下命令：
+
+\begin{lstlisting}
+git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
+.\bootstrap-vcpkg.bat
+\end{lstlisting}
+即可完成安装，安装完成后通过系统环境变量将vcpkg添加到PATH中并新建
+“VCPKG\_ROOT”环境变量指向vcpkg的安装路径即可使用vcpkg命令，或者在使用时指定vcpkg的路径。
+
+\subsubsection{Linux}
+在Linux平台上安装VCPKG，首先需要安装Git和CMake，Git可以通过以下命令安装：
+\begin{lstlisting}
+sudo apt-get update
+sudo apt-get install git
+\end{lstlisting}
+然后执行以下命令：
+\begin{lstlisting}
+git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
+./bootstrap-vcpkg.sh
+\end{lstlisting}
+\section{本地编译}
+在本地编译前参照前面的步骤需要先安装好相关工具和库，这里使用的IDE为vscode，visual studio 2022同理。
+\subsection{前置插件}
+在vscode中需要安装C/C++ Extension Pack插件。
+\subsection{编译步骤}
+在vscode中打开文件夹，选择工程目录，
+
+\section{交叉编译}
+\section{容器准备}
+在vscode页面进入该目录下的docker文件夹进行容器构建，构建完成后从创建新的容器后进入。进入后，将vscode的工作区切换到工程下，安装好相关插件后vscode下方状态栏出现生成即可开始编译
+\section{打包安装}
+下方点击cpack后即可打包，打包的结果在./build文件夹下.sh文件,拷贝到开发板上后chmod后运行即可安装完成
 \end{document}

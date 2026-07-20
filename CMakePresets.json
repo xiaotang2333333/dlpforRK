@@ -2,7 +2,7 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "rkarm",
+            "name": "arm64-linux-dynamic",
             "displayName": "arm64 工具链配置预设",
             "description": "设置生成器、版本和安装目录",
             "generator": "Ninja",
@@ -14,15 +14,54 @@
             }
         },
         {
-            "name": "x64-mingw",
-            "displayName": "x64 mingw 工具链配置预设",
+            "name": "arm64-linux",
+            "displayName": "arm64 static工具链配置预设",
             "description": "设置生成器、版本和安装目录",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE":"Debug",
-                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/cmake/toolchain/x64-mingw.cmake",
+                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}",
+                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/cmake/toolchain/x64-arm64-toolchain.cmake",
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "x64-mingw-dynamic",
+            "displayName": "x64 mingw dynamic工具链配置预设",
+            "description": "设置生成器、版本和安装目录",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "VCPKG_HOST_TRIPLET": "x64-mingw-dynamic",
+                "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "x64-mingw-static",
+            "displayName": "x64 mingw static工具链配置预设",
+            "description": "设置生成器、版本和安装目录",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "VCPKG_HOST_TRIPLET": "x64-mingw-static",
+                "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "x64-windows",
+            "displayName": "x64 windows工具链配置预设",
+            "description": "设置生成器、版本和安装目录",
+            "generator": "Visual Studio 18 2026",
+            "toolset": "host=x64",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "VCPKG_HOST_TRIPLET": "x64-windows",
+                "VCPKG_TARGET_TRIPLET": "x64-windows",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_RC_FLAGS_DEBUG": "/D_DEBUG"
             }
         }
     ]

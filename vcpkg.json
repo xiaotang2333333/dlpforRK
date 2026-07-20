@@ -28,8 +28,7 @@
         "widgets",
         "jpeg",
         "png"
-      ],
-      "platform": "mingw"
+      ]
     },
     "hidapi"
   ]
